@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Caveat:wght@500;600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* =========================================================
+   COLORS  (pulled from the Pantone swatches: 638 / 673 / 695)
+   ========================================================= */
+:root{
+  --bg:#fff9f3;            /* warm cream paper */
+  --paper:#fffdfa;
+  --turq:#00b5d6;          /* Pantone 638 – accent only */
+  --turq-soft:#bfe6ea;
+  --turq-pale:#e4f4f5;
+  --teal-ink:#2a8fa3;      /* readable turquoise for text */
+  --pink:#de8ab0;          /* Pantone 673 */
+  --pink-soft:#f3c9da;
+  --pink-pale:#fbeaf0;
+  --mauve:#b0667f;         /* Pantone 695 */
+  --mauve-soft:#dcc6d2;
+  --ink:#5b3a4a;
+  --ink-soft:#8a6a79;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --hand:'Caveat','Segoe Script',cursive;
+  --body:'Nunito',system-ui,sans-serif;
+  --shadow:0 10px 26px -12px rgba(176,102,127,.45),0 2px 4px rgba(176,102,127,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);color:var(--ink);background:var(--bg);
+  line-height:1.7;overflow-x:clip;-webkit-font-smoothing:antialiased;
+}
+/* very light paper grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .75  0 0 0 0 .6  0 0 0 0 .62  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+::selection{background:var(--pink-soft)}
+:focus-visible{outline:2px dashed var(--mauve);outline-offset:4px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1}
+section{position:relative;padding:clamp(4rem,10vw,8rem) 1.25rem}
+
+/* ---------- icons ---------- */
+.ico{width:100%;height:100%;display:block;overflow:visible}
+.s,.n{stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:var(--f,none)}
+.n{fill:none}
+.dot{fill:currentColor;stroke:none}
+.deco{position:absolute;pointer-events:none;width:var(--w,46px);aspect-ratio:1;color:var(--c,var(--pink));--f:var(--fill,none);opacity:.9}
+.fl{animation:float var(--t,9s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ---------- reveal on scroll ---------- */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease;transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ---------- tape / paper bits ---------- */
+.tape{position:absolute;top:-13px;left:50%;width:92px;height:27px;translate:-50% 0;rotate:-3deg;
+  background:rgba(191,230,234,.8);box-shadow:0 1px 2px rgba(0,0,0,.08);
+  clip-path:polygon(0 0,3% 25%,0 50%,3% 75%,0 100%,100% 100%,97% 75%,100% 50%,97% 25%,100% 0);z-index:2}
+.tape.pink{background:rgba(243,201,218,.85);rotate:2.5deg}
+.tape.mauve{background:rgba(220,198,210,.85);rotate:-1.5deg}
+.photo{aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--turq-pale)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s ease}
+.ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;
+  background:repeating-linear-gradient(135deg,#e4f4f5 0 11px,#d8eff1 11px 22px);color:var(--teal-ink);
+  font-family:var(--hand);font-size:1.35rem;transition:transform 1.4s ease}
+.ph .ico{width:38px;height:38px}
+.photo:hover img,.photo:hover .ph{transform:scale(1.035)}
+
+/* =========================================================
+   1. HERO
+   ========================================================= */
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:5rem;
+  background:radial-gradient(60% 45% at 50% 35%,var(--turq-pale) 0,transparent 70%),
+             radial-gradient(40% 30% at 85% 90%,var(--pink-pale) 0,transparent 70%),var(--bg)}
+.hero-inner{position:relative;z-index:2;max-width:760px}
+.hero-art{width:clamp(150px,34vw,210px);aspect-ratio:1;margin:0 auto 1.8rem;border-radius:50%;
+  background:var(--paper);border:2px dashed var(--turq-soft);display:grid;place-items:center;
+  box-shadow:var(--shadow);animation:rise 1.4s .9s both ease}
+.hero-art .deco{position:static;width:58%;color:var(--mauve);--f:var(--pink-pale);opacity:1}
+.hero .for{font-family:var(--hand);font-size:1.7rem;color:var(--teal-ink);animation:rise 1.4s 1.2s both ease}
+.hero h1{font-size:clamp(2.2rem,6.6vw,4.4rem);margin:.4rem 0 1rem;color:var(--ink);animation:rise 1.4s 1.5s both ease}
+.hero .bday{font-family:var(--hand);font-size:clamp(2rem,5vw,2.8rem);color:var(--mauve);display:inline-flex;align-items:center;gap:.4rem;animation:rise 1.4s 1.9s both ease}
+.hero .bday .deco{position:static;width:1.1em;--f:var(--pink);opacity:1}
+.btn{display:inline-block;margin-top:2.4rem;padding:.8rem 1.8rem;border-radius:999px;border:2px solid var(--mauve);
+  background:var(--paper);color:var(--mauve);font:600 1.05rem var(--body);text-decoration:none;box-shadow:var(--shadow);
+  transition:background .5s,color .5s,transform .5s;animation:rise 1.4s 2.3s both ease}
+.btn:hover{background:var(--mauve);color:#fff;transform:translateY(-2px)}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes appear{from{opacity:0}to{opacity:.9}}
+.hero .deco{animation:appear 2s both ease}
+.hero .deco.fl{animation:appear 2s both ease,float var(--t,9s) ease-in-out infinite}
+.hero-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.twinkle{position:absolute;width:var(--w,12px);aspect-ratio:1;color:var(--c,var(--pink));--f:var(--c,var(--pink));
+  opacity:0;animation:tw var(--t,7s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+@keyframes tw{0%,100%{opacity:0}50%{opacity:.75}}
+
+/* ---------- section heads ---------- */
+.sec-head{text-align:center;margin-bottom:clamp(2.5rem,6vw,4.5rem);position:relative;z-index:1}
+.kicker{display:block;font-family:var(--hand);font-size:1.7rem;color:var(--teal-ink);margin-bottom:.2rem}
+.sec-head h2{font-size:clamp(2rem,5vw,3.2rem);color:var(--ink)}
+.sec-head .sub{font-family:var(--hand);font-size:1.4rem;color:var(--ink-soft);margin-top:.6rem}
+
+/* =========================================================
+   2. TIMELINE
+   ========================================================= */
+.timeline-sec{background:linear-gradient(var(--bg),var(--bg))}
+.timeline{position:relative;max-width:980px;margin:0 auto}
+.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed var(--mauve-soft);translate:-1px 0}
+.tl-lead{position:relative;z-index:1;display:table;margin:2.5rem auto 1rem;padding:.1em 1em;background:var(--bg);
+  font-family:var(--hand);font-size:2rem;color:var(--mauve)}
+.tl-item{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;margin:1rem 0 2.2rem}
+.tl-mark{grid-column:2;grid-row:1;justify-self:center;width:46px;height:46px;border-radius:50%;background:var(--paper);
+  border:2px solid var(--turq-soft);padding:9px;color:var(--c,var(--pink));--f:var(--c,var(--pink));z-index:1;box-shadow:var(--shadow)}
+.tl-mark .s{--f:var(--pale,none)}
+.card{position:relative;background:var(--paper);border:1px solid #f2e4e8;border-radius:14px;padding:14px 14px 20px;box-shadow:var(--shadow);
+  rotate:var(--r,0deg);transition:rotate .9s ease,translate .9s ease;width:min(100%,390px);grid-row:1}
+.card:hover{translate:0 -4px;rotate:calc(var(--r,0deg) * .4)}
+.tl-item.left .card{grid-column:1;justify-self:end}
+.tl-item.right .card{grid-column:3;justify-self:start}
+.card .date{display:block;font-family:var(--hand);font-size:1.3rem;color:var(--mauve);margin-top:.9rem}
+.card h3{font-size:1.55rem;margin:.1rem 0 .3rem;color:var(--ink)}
+.card p{color:var(--ink-soft);font-size:1rem}
+.tl-end{display:block;width:34px;height:34px;margin:1rem auto 0;position:relative;z-index:1;color:var(--turq);--f:var(--turq-pale);background:var(--bg);padding:2px}
+
+/* =========================================================
+   3. GALLERY (scrapbook)
+   ========================================================= */
+.gallery-sec{background:linear-gradient(var(--bg),var(--turq-pale) 25%,var(--turq-pale) 75%,var(--bg))}
+.scrap{display:flex;flex-wrap:wrap;justify-content:center;gap:2.6rem 2.2rem;max-width:1050px;margin:0 auto}
+.pol{position:relative;background:#fff;padding:12px 12px 56px;width:clamp(210px,28vw,290px);box-shadow:var(--shadow);
+  rotate:var(--r,0deg);transition:rotate 1s ease,translate 1s ease}
+.pol:nth-child(3n+2){margin-top:2.6rem}
+.pol:nth-child(4n+1){margin-bottom:.6rem}
+.pol:hover{translate:0 -5px;rotate:calc(var(--r,0deg) * .3)}
+.pol .photo{aspect-ratio:1;border-radius:2px}
+.pol .cap{position:absolute;left:10px;right:10px;bottom:11px;text-align:center;font-family:var(--hand);font-size:1.4rem;line-height:1.1;color:var(--ink)}
+.sticker{position:absolute;width:48px;right:-14px;bottom:-16px;color:var(--c,var(--pink));--f:var(--c,var(--pink));rotate:8deg;z-index:3}
+.sticker .s{--f:var(--sf,var(--pink-pale))}
+.scrap-note{width:min(240px,70vw);align-self:center;padding:1.2rem;background:var(--pink-pale);border-radius:4px 4px 18px 4px;rotate:2deg;
+  box-shadow:var(--shadow);font-family:var(--hand);font-size:1.5rem;line-height:1.25;color:var(--mauve);text-align:center;position:relative}
+
+/* =========================================================
+   4. LITTLE THINGS
+   ========================================================= */
+.little-sec{overflow:hidden}
+.lt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.6rem;max-width:1000px;margin:0 auto;grid-auto-flow:dense}
+.lt{position:relative;padding:1.5rem 1.4rem;box-shadow:var(--shadow);rotate:var(--r,0deg);transition:rotate .9s ease,translate .9s ease;min-height:150px}
+.lt:hover{translate:0 -4px;rotate:0deg}
+.lt h3{font-family:var(--hand);font-size:1.7rem;font-weight:600;color:var(--mauve);line-height:1.1;margin-bottom:.4rem}
+.lt p{color:var(--ink-soft);font-size:.98rem}
+.lt .deco{position:absolute;right:12px;top:12px;width:30px;opacity:.75}
+.lt.sticky{background:var(--pink-pale);border-radius:3px 3px 20px 3px}
+.lt.sticky::after{content:"";position:absolute;right:0;bottom:0;width:26px;height:26px;border-radius:0 0 20px 0;
+  background:linear-gradient(135deg,transparent 50%,#f0cbdb 50%);box-shadow:-2px -2px 3px rgba(0,0,0,.04)}
+.lt.lined{background:repeating-linear-gradient(transparent 0 31px,#e7d6de 31px 32px),var(--paper);padding-top:1.2rem;border-radius:4px;border-left:3px solid var(--pink-soft)}
+.lt.lined p{line-height:32px}
+.lt.square{background:var(--turq-pale);border-radius:20px;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;border:2px solid #fff}
+.lt.square h3{color:var(--teal-ink)}
+.lt.ticket{background:var(--paper);border:2px dashed var(--pink);border-radius:10px}
+.lt.plain{background:#fff;border:1px solid #f2e4e8;border-radius:12px}
+.lt.mauve{background:#efe1e8;border-radius:16px}
+.lt.tall{grid-row:span 2;display:flex;flex-direction:column;justify-content:center}
+
+/* =========================================================
+   5/6. LETTER
+   ========================================================= */
+.letter-sec{background:linear-gradient(var(--bg),var(--pink-pale) 30%,var(--pink-pale) 70%,var(--bg))}
+.letter{position:relative;max-width:690px;margin:0 auto;padding:4.2rem clamp(1.4rem,6vw,3.4rem) 2.4rem;
+  background:repeating-linear-gradient(transparent 0 31px,#eddde3 31px 32px),var(--paper);
+  background-position:0 4px;border-radius:6px;box-shadow:var(--shadow);border:1px solid #f2e4e8}
+.letter::before{content:"";position:absolute;left:clamp(1.1rem,4.4vw,2.6rem);top:0;bottom:0;border-left:1.5px solid var(--pink-soft)}
+.seal{position:absolute;top:-26px;left:50%;translate:-50% 0;width:56px;height:56px;border-radius:50%;
+  background:var(--mauve);color:#fff;padding:14px;box-shadow:0 4px 10px rgba(176,102,127,.4);--f:#fff}
+.letter h2{font-size:clamp(2rem,5vw,2.8rem);text-align:center;margin-bottom:24px;line-height:64px;color:var(--ink)}
+.letter p{font-family:var(--serif);font-weight:500;font-size:1.28rem;line-height:32px;margin-bottom:32px;color:var(--ink)}
+.letter .sign{font-family:var(--hand);font-size:2.1rem;color:var(--mauve);text-align:right;line-height:32px;margin:0}
+
+/* =========================================================
+   7. FINALE
+   ========================================================= */
+.finale{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+  background:linear-gradient(var(--bg),var(--turq-pale) 70%,#d2ecee)}
+.finale-inner{position:relative;z-index:2;max-width:640px}
+.finale .cake{width:clamp(90px,20vw,130px);margin:0 auto 1.2rem;color:var(--mauve);--f:var(--pink-pale)}
+.finale .cake .ico{overflow:visible}
+.finale h2{font-size:clamp(3rem,11vw,6.4rem);color:var(--mauve);margin-bottom:.3rem}
+.finale .nm{font-family:var(--hand);font-size:2rem;color:var(--teal-ink)}
+.finale p.msg{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,3.4vw,1.7rem);line-height:1.5;color:var(--ink);margin-top:1.4rem}
+.finale .by{display:block;margin-top:3rem;font-family:var(--hand);font-size:1.3rem;color:var(--ink-soft)}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:9px;height:14px;border-radius:2px;opacity:0}
+.finale.go .confetti i{animation:fall var(--t,9s) linear var(--dl,0s) 2 both}
+@keyframes fall{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}10%{opacity:.85}
+  50%{transform:translate3d(var(--sw,20px),55vh,0) rotate(120deg)}100%{opacity:.85;transform:translate3d(calc(var(--sw,20px) * -1),115vh,0) rotate(240deg)}}
+.finale.go .deco.pop{animation:rise 2s ease both,float 9s 2s ease-in-out infinite}
+
+/* ---------- music toggle ---------- */
+.music{position:fixed;right:14px;bottom:14px;z-index:60;max-width:calc(100vw - 28px);height:44px;border-radius:999px;border:2px solid var(--mauve-soft);
+  background:var(--paper);color:var(--mauve);padding:0 16px 0 12px;cursor:pointer;box-shadow:var(--shadow);display:none;align-items:center;gap:9px;
+  font:600 .95rem var(--body);transition:background .5s,border-color .5s}
+.music.show{display:inline-flex}
+.music[aria-pressed="true"]{background:var(--pink-pale);border-color:var(--pink)}
+.music .mi{width:22px;height:22px;flex:none}
+.music .mt{font-family:var(--hand);font-size:1.25rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music .bars{display:flex;align-items:flex-end;gap:3px;height:16px;flex:none}
+.music .bars i{width:3px;height:5px;border-radius:2px;background:var(--pink);transition:height .6s}
+.music[aria-pressed="true"] .bars i{animation:eq 2.4s ease-in-out infinite}
+.music[aria-pressed="true"] .bars i:nth-child(2){animation-delay:.6s}
+.music[aria-pressed="true"] .bars i:nth-child(3){animation-delay:1.2s}
+@keyframes eq{0%,100%{height:5px}50%{height:15px}}
+
+/* ---------- start screen (opens the gift + starts the music) ---------- */
+.gate{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;
+  background:radial-gradient(60% 45% at 50% 40%,var(--turq-pale) 0,transparent 70%),var(--bg);transition:opacity 1.2s ease,visibility 1.2s}
+.gate[hidden]{display:none}
+.gate.out{opacity:0;visibility:hidden}
+.gate-ico{display:block;width:96px;height:96px;margin:0 auto 1rem;color:var(--mauve);--f:var(--pink-pale);animation:float 7s ease-in-out infinite}
+.gate p{font-family:var(--hand);font-size:2rem;color:var(--mauve)}
+.gate .btn{animation:none;margin-top:1.4rem;cursor:pointer}
+html.gated,html.gated body{overflow:hidden}
+html.gated .hero *{animation-play-state:paused!important}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width:720px){
+  .timeline::before{left:22px}
+  .tl-lead{margin-left:46px;text-align:left;padding-left:.5em}
+  .tl-item{grid-template-columns:46px 1fr;column-gap:14px}
+  .tl-mark{grid-column:1;justify-self:start;width:44px;height:44px}
+  .tl-item .card,.tl-item.left .card,.tl-item.right .card{grid-column:2;justify-self:stretch;width:100%}
+  .scrap{gap:2rem 1rem}
+  .pol{width:calc(50% - .6rem);padding:8px 8px 46px}
+  .pol .cap{font-size:1.15rem;bottom:8px}
+  .pol:nth-child(3n+2){margin-top:0}
+  .pol:nth-child(even){margin-top:1.8rem}
+  .sticker{width:38px}
+  .scrap-note{width:100%}
+  .lt.tall{grid-row:auto}
+}
+
+/* ---------- gentle on the eyes ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .reveal{opacity:1;transform:none}
+  .hero .deco,.hero-art,.hero .for,.hero h1,.hero .bday,.btn{opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HAND-DRAWN ICON LIBRARY (inline SVG, reused with <use>)
+     ========================================================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-star" viewBox="0 0 64 64"><path class="s" d="M32 7 L39 25 L57 26 L43 38 L48 56 L32 46 L16 56 L21 38 L7 26 L25 25 Z"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 64 64"><path class="s" d="M32 6 C34 22 42 30 58 32 C42 34 34 42 32 58 C30 42 22 34 6 32 C22 30 30 22 32 6Z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 64 64"><path class="s" d="M32 55 C9 38 7 22 17 15 C25 10 32 17 32 22 C32 17 39 10 47 15 C57 22 55 38 32 55Z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 64 64"><path class="s" d="M17 46 C5 46 5 30 18 30 C19 17 38 15 42 28 C57 26 60 46 47 46 Z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 64 64"><path class="s" d="M42 8 C26 10 15 24 19 40 C23 55 42 59 55 48 C38 48 30 36 34 22 C36 16 38 12 42 8Z"/></symbol>
+    <symbol id="i-flower" viewBox="0 0 64 64">
+      <circle class="s" cx="32" cy="16" r="9"/><circle class="s" cx="47" cy="27" r="9"/><circle class="s" cx="41" cy="44" r="9"/>
+      <circle class="s" cx="23" cy="44" r="9"/><circle class="s" cx="17" cy="27" r="9"/>
+      <circle class="s" cx="32" cy="32" r="6" style="fill:var(--f2,#fff)"/></symbol>
+    <symbol id="i-butterfly" viewBox="0 0 64 64">
+      <path class="s" d="M32 30 C22 8 4 12 9 29 C12 38 25 38 32 30Z"/><path class="s" d="M32 30 C42 8 60 12 55 29 C52 38 39 38 32 30Z"/>
+      <path class="s" d="M32 34 C23 40 17 54 27 54 C31 53 32 44 32 34Z"/><path class="s" d="M32 34 C41 40 47 54 37 54 C33 53 32 44 32 34Z"/>
+      <path class="n" d="M32 22 V44 M30 20 C28 14 25 12 22 12 M34 20 C36 14 39 12 42 12"/></symbol>
+    <symbol id="i-cake" viewBox="0 0 64 64">
+      <path class="s" d="M10 38 h44 v16 a3 3 0 0 1 -3 3 h-38 a3 3 0 0 1 -3 -3 z"/>
+      <path class="n" d="M10 46 q5.5 5 11 0 t11 0 t11 0 t11 0"/>
+      <path class="s" d="M16 38 v-9 a3 3 0 0 1 3 -3 h26 a3 3 0 0 1 3 3 v9"/>
+      <path class="n" d="M16 32 q4 4 8 0 t8 0 t8 0 t8 0"/>
+      <path class="n" d="M26 26 v-8 M38 26 v-8"/>
+      <path class="s" d="M26 6 c-4 4 -3 8 0 8 s4 -4 0 -8z" style="fill:var(--flame,#f3c9da)"/>
+      <path class="s" d="M38 6 c-4 4 -3 8 0 8 s4 -4 0 -8z" style="fill:var(--flame,#f3c9da)"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 64 64">
+      <rect class="s" x="9" y="28" width="46" height="27" rx="3"/><rect class="s" x="7" y="20" width="50" height="9" rx="3"/>
+      <path class="n" d="M32 20 V55"/><path class="s" d="M32 20 C20 4 10 16 24 20 M32 20 C44 4 54 16 40 20"/></symbol>
+    <symbol id="i-envelope" viewBox="0 0 64 64">
+      <rect class="s" x="6" y="15" width="52" height="35" rx="4"/><path class="n" d="M7 18 L32 36 L57 18"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 64 64">
+      <rect class="s" x="7" y="20" width="50" height="33" rx="6"/><circle class="s" cx="32" cy="36" r="9"/>
+      <path class="s" d="M23 20 l3 -7 h12 l3 7"/><circle class="dot" cx="50" cy="27" r="1.8"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 64 64">
+      <path class="s" d="M7 18 H57 V27 A5 5 0 0 0 57 37 V46 H7 V37 A5 5 0 0 0 7 27 Z"/><path class="n" stroke-dasharray="3 5" d="M41 20 V44"/></symbol>
+    <symbol id="i-candle" viewBox="0 0 64 64">
+      <rect class="s" x="25" y="26" width="14" height="30" rx="2"/><path class="n" d="M25 36 q3.5 4 7 0 t7 0"/>
+      <path class="s" d="M32 6 c-6 6 -4 12 0 12 s6 -6 0 -12z"/></symbol>
+    <symbol id="i-balloon" viewBox="0 0 64 64">
+      <path class="s" d="M32 6 C18 6 13 18 15 28 C17 38 26 46 32 46 C38 46 47 38 49 28 C51 18 46 6 32 6Z"/>
+      <path class="s" d="M29 46 h6 l-3 4 z"/><path class="n" d="M32 50 C27 54 37 58 32 62"/></symbol>
+    <symbol id="i-note" viewBox="0 0 64 64">
+      <path class="n" d="M24 46 V14 L46 10 V42"/><circle class="s" cx="19" cy="46" r="6" style="fill:currentColor"/><circle class="s" cx="41" cy="42" r="6" style="fill:currentColor"/></symbol>
+    <symbol id="i-scissors" viewBox="0 0 64 64">
+      <circle class="s" cx="16" cy="46" r="7"/><circle class="s" cx="16" cy="18" r="7"/><path class="n" d="M22 22 L56 44 M22 42 L56 20"/></symbol>
+  </defs>
+</svg>
+
+<!-- =========================================================
+     PAGE
+     ========================================================= -->
+<main>
+
+  <!-- 1. HERO -->
+  <section class="hero" id="top">
+    <div class="hero-stars" id="heroStars"></div>
+
+    <span class="deco fl" data-ico="cloud"   style="--w:92px;--c:var(--turq);--fill:var(--turq-pale);top:12%;left:7%;--t:11s;animation-delay:.4s,0s" data-s=".05"></span>
+    <span class="deco fl" data-ico="cloud"   style="--w:62px;--c:var(--mauve-soft);--fill:#fff;top:62%;right:8%;--t:12s;animation-delay:.9s,1s" data-s=".08"></span>
+    <span class="deco fl" data-ico="balloon" style="--w:56px;--c:var(--pink);--fill:var(--pink-soft);top:18%;right:11%;--t:10s;animation-delay:1.2s,0s" data-s=".06"></span>
+    <span class="deco fl" data-ico="moon"    style="--w:44px;--c:var(--turq);--fill:var(--turq-pale);top:70%;left:10%;--t:13s;animation-delay:1.5s,.5s" data-s=".07"></span>
+    <span class="deco fl" data-ico="gift"    style="--w:52px;--c:var(--mauve);--fill:var(--pink-pale);bottom:9%;right:20%;--t:11s;animation-delay:1.8s,0s" data-s=".04"></span>
+    <span class="deco fl" data-ico="envelope" style="--w:50px;--c:var(--pink);--fill:#fff;top:34%;left:15%;--t:12s;animation-delay:2s,0s" data-s=".05"></span>
+    <span class="deco fl" data-ico="sparkle" style="--w:26px;--c:var(--turq);--fill:var(--turq-soft);top:28%;right:24%;--t:8s;animation-delay:2.1s,0s"></span>
+
+    <div class="hero-inner">
+      <div class="hero-art"><span class="deco" data-ico="cake"></span></div>
+      <p class="for" id="heroFor"></p>
+      <h1 id="heroTitle"></h1>
+      <span class="bday"><span id="heroSub"></span><span class="deco" data-ico="heart"></span></span><br>
+      <a class="btn" id="heroBtn" href="#memories"></a>
+    </div>
+  </section>
+
+  <!-- 2. MEMORY TIMELINE -->
+  <section class="timeline-sec" id="memories">
+    <span class="deco fl" data-ico="sparkle" style="--w:30px;--c:var(--turq);--fill:var(--turq-soft);top:6%;left:10%" data-s=".05"></span>
+    <span class="deco fl" data-ico="flower"  style="--w:54px;--c:var(--pink);--fill:var(--pink-pale);top:30%;right:3%;--t:12s" data-s=".06"></span>
+    <span class="deco fl" data-ico="butterfly" style="--w:50px;--c:var(--mauve);--fill:var(--pink-pale);top:65%;left:2%;--t:11s" data-s=".07"></span>
+    <header class="sec-head reveal"><span class="kicker" id="tlKicker"></span><h2 id="tlTitle"></h2><p class="sub" id="tlSub"></p></header>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <!-- 3. PHOTO MEMORIES -->
+  <section class="gallery-sec" id="photos">
+    <span class="deco fl" data-ico="star"    style="--w:34px;--c:var(--turq);--fill:#fff;top:8%;right:8%" data-s=".05"></span>
+    <span class="deco fl" data-ico="camera"  style="--w:58px;--c:var(--mauve);--fill:var(--pink-pale);top:4%;left:6%;--t:12s" data-s=".06"></span>
+    <span class="deco fl" data-ico="cloud"   style="--w:80px;--c:#fff;--fill:#fff;bottom:6%;left:4%;--t:13s" data-s=".05"></span>
+    <header class="sec-head reveal"><span class="kicker" id="phKicker"></span><h2 id="phTitle"></h2></header>
+    <div class="scrap" id="scrap"></div>
+  </section>
+
+  <!-- 4. LITTLE THINGS -->
+  <section class="little-sec" id="little">
+    <span class="deco fl" data-ico="ticket" style="--w:60px;--c:var(--pink);--fill:var(--pink-pale);top:5%;right:7%;--t:11s" data-s=".05"></span>
+    <span class="deco fl" data-ico="sparkle" style="--w:24px;--c:var(--pink);--fill:var(--pink-soft);top:12%;left:12%" data-s=".07"></span>
+    <span class="deco fl" data-ico="scissors" style="--w:46px;--c:var(--turq);bottom:5%;left:6%;--t:12s" data-s=".05"></span>
+    <header class="sec-head reveal"><span class="kicker" id="ltKicker"></span><h2 id="ltTitle"></h2></header>
+    <div class="lt-grid" id="ltGrid"></div>
+  </section>
+
+  <!-- 5/6. THE LETTER -->
+  <section class="letter-sec" id="letter">
+    <span class="deco fl" data-ico="heart" style="--w:34px;--c:var(--pink);--fill:var(--pink-soft);top:10%;left:9%;--t:11s" data-s=".06"></span>
+    <span class="deco fl" data-ico="moon" style="--w:42px;--c:var(--turq);--fill:var(--turq-pale);top:22%;right:7%;--t:13s" data-s=".05"></span>
+    <span class="deco fl" data-ico="star" style="--w:26px;--c:var(--mauve);--fill:#fff;bottom:12%;left:12%" data-s=".07"></span>
+    <article class="letter reveal">
+      <div class="seal"><span class="ico" data-ico="heart" style="display:block;width:100%;height:100%"></span></div>
+      <h2 id="letterTitle"></h2>
+      <div id="letterBody"></div>
+    </article>
+  </section>
+
+  <!-- 7. FINALE -->
+  <section class="finale" id="finale">
+    <div class="confetti" id="confetti"></div>
+    <span class="deco pop fl" data-ico="balloon" style="--w:64px;--c:var(--turq);--fill:var(--turq-soft);left:9%;bottom:14%;--t:10s;opacity:0" data-s=".05"></span>
+    <span class="deco pop fl" data-ico="balloon" style="--w:52px;--c:var(--pink);--fill:var(--pink-soft);left:17%;bottom:28%;--t:12s;opacity:0" data-s=".07"></span>
+    <span class="deco pop fl" data-ico="balloon" style="--w:60px;--c:var(--mauve);--fill:var(--mauve-soft);right:10%;bottom:20%;--t:11s;opacity:0" data-s=".06"></span>
+    <span class="deco pop fl" data-ico="star" style="--w:30px;--c:var(--turq);--fill:#fff;right:20%;top:16%;opacity:0"></span>
+    <span class="deco pop fl" data-ico="sparkle" style="--w:26px;--c:var(--pink);--fill:var(--pink-soft);left:22%;top:14%;opacity:0"></span>
+    <div class="finale-inner reveal">
+      <div class="cake"><span class="ico" data-ico="cake" style="display:block;width:100%;height:100%"></span></div>
+      <h2 id="finTitle"></h2>
+      <p class="nm" id="finName"></p>
+      <p class="msg" id="finMsg"></p>
+      <span class="by" id="finBy"></span>
+    </div>
+  </section>
+
+</main>
+
+<button class="music" id="music" aria-label="Play music" aria-pressed="false">
+  <span class="mi" data-ico="note"></span><span class="mt" id="musicTitle"></span><span class="bars"><i></i><i></i><i></i></span>
+</button>
+
+<div class="gate" id="gate" hidden>
+  <div>
+    <span class="gate-ico" data-ico="envelope"></span>
+    <p id="gateText"></p>
+    <button class="btn" id="gateBtn" type="button"></button>
+  </div>
+</div>
+
+
+<script>
+/* ==========================================================================
+   // ===== EDIT YOUR CONTENT HERE =====
+   Everything you need to change lives in this CONFIG block.
+   - Text: replace what's inside the quotes.
+   - Photos: put a file path in `photo`, e.g. "photos/01.jpg". Leave "" to show a placeholder.
+   - Line breaks inside text: use \n
+   ========================================================================== */
+const CONFIG = {
+
+  name: "Rayan",
+  from: "mohamed",
+
+  /* ---- 1. Opening ---- */
+  hero: {
+  name: "Rayan",
+    forLine: "for Rayan ",
+    title: "للشخص الذي دخل قلبي واسعد ايامي ",
+    sub: "Happy Birthday",
+    button: "افتحي الذكريات"
+  },
+
+  /* ---- 2. Memory timeline ---- */
+  timeline: {
+    kicker: "a little story",
+    title: "♡ذكريات محفوره بداخلي",
+    sub: "عمري ما بنسى اللحظات الحلوه بينا♡",
+    items: [
+      { lead: "Then...",                   date: "10/10", title: "اقرب صوره على قلبي", text: "♡عمري ما بنسى هالابتسامه", photo:"roro1.jpg" },
+      { lead: "",                          date: "10/10", title: "سحر الغمازات", text: "♡لوحه فنيه عنوانها غمازتك", photo: "roro2.jpg" },
+      { lead: "Somewhere along the way...",date: "10/10", title: "الخدود روايه للنعومه", text: "♡يا قطنه تلوح  بالجوار اقبلي علي فأنا مشتاق", photo: "roro3.jpg" },
+      { lead: "",                          date: "10/10", title: "بدايه الحكايه", text: "وفي العاشر من اكتوبر ولدت سيده نساء الارض بجمالها ورقتها منذ الطفوله", photo: "roro4.jpg" },
+      { lead: "And then...",               date: "10/10", title: "من النظره الاولى", text: "♡اول صوره واول نظره لانسان صار اغلى ما عندي", photo: "roro5.jpg" }
+    ],
+    // icons used on the center line, in order: heart sparkle cloud flower moon butterfly star
+    marks: ["heart","sparkle","cloud","flower","moon","butterfly","star"]
+  },
+
+  /* ---- 3. Photo memories ---- */
+  gallery: {
+    kicker: "the album",
+    title: "♡بغض تفاصيلك الجميله",
+    // frame tilt in degrees, sticker: heart | star | sparkle | flower | butterfly | moon | ""
+    photos: [
+      { photo: "roro6.jpg", caption: "رقه واناقه داخل البيت وخارجه", tilt: -3,  sticker: "heart",     tape: "turq" },
+      { photo: "roro7.jpg", caption: "♡فراشه تترك اثرها اينما حلت",                    tilt: 2.5, sticker: "",          tape: "pink" },
+      { photo: "roro8.jpg", caption: "✦سحر العيون يكفي",                    tilt: -1.5,sticker: "star",      tape: "mauve" },
+      { photo: "roro9.jpg", caption: "وردك المفضل",                   tilt: 3,   sticker: "",          tape: "turq" },
+      { photo: "roro10.jpg", caption: "♡طفلتي الجميله شبيهه الورد",                    tilt: -2.5,sticker: "butterfly", tape: "pink" },
+      { photo: "roro11.jpg", caption: "♡زهريه وجميله مثل جمال روحك",                    tilt: 1.8, sticker: "sparkle",   tape: "mauve" }
+    ],
+    note: "حتى رغم المسافات ♡ وجدت بداخلك شيء لم اجده بغيرك"   // set to "" to hide this sticky note
+  },
+
+  /* ---- 4. Little things ---- */
+  little: {
+    kicker: "tiny details",
+    title: "اشياء جميله مستحيل انساها",
+    // style: sticky | lined | square | ticket | plain | mauve | tall
+    // icon:  heart star sparkle cloud moon flower butterfly note ticket camera candle gift
+    cards: [
+      { label: "Your favorite...",            text: "اشيائك المفضله ♡ عشقك للورد & للكتب وللقهوه والمته واهم شغله :) العاب الاطفال.",   style: "sticky", icon: "heart",     tilt: -1.5 },
+      { label: "That weird joke...",          text: "النكت البايخه الي بينا مزحاتنا وقت مود النرفزه حكياتك وقت تتمايعي ادمنت ♡ كلشي يخصك",   style: "lined",  icon: "sparkle",   tilt: 1 },
+      { label: "That song...",                text: "اغنيتك المفضله♡ قمر ومنور دنيتي ♡ من اكثر الاغاني الي صاارت قريبه عقلبي وريحتك فيها",    style: "square", icon: "note",      tilt: -1 },
+      { label: "Hama♡...",               text: "حماه نفسها♡ اكثر الاماكن حبا صارت عمدي وهدف رحلاتي لانها بتضم انسانه من الماس",   style: "ticket", icon: "ticket",    tilt: 1.5 },
+      { label: "That day...",                 text: "اكتر يوم بعدني متذكرو♡ يوم شفت صورتك لاول مره♡ يوم سمعت صوتك اول مره♡ يوم حكيتك فيديو اول مره♡ كلها ايام قريبه عقلبي",   style: "mauve",  icon: "cloud",     tilt: -1 },
+      { label: "A thing I'll always remember...", text: "كلمات بتذكرها طول عمري♡ انت غير الكل♡ قد ما اختلطت مع البشر برجع لعندك♡انت احنهم♡الله يجمعني فيك♡ بحسك متل ابوي♡ حبيبي وعمري♡ ", style: "tall", icon: "star", tilt: 1.2 },
+      { label: "Your laugh...",               text: "ضحكتك♡♡♡ الاشي الي لو صدف وسمعتو بيسحرني ويغرقني♡♡ ضحكتك الخجوله وبوستك الحنونه سر سعادتي ووجودي♡بهالدنيا",   style: "plain",  icon: "flower",    tilt: -1.2 }
+    ]
+  },
+
+  /* ---- 5. Your message ---- */
+  letter: {
+    title: "To You ♡",
+    paragraphs: [
+      "من يوم ما عرفتك الى تاريخ قراءتك لهالرساله مرق على تعارفنا 604 يوم وساعتان و28 دقيقه ",
+      "مرينا سوا فيها باحلى شكل وواجهنا الحلوه والمره وبعد كل يوم ينقضي ونحنا سوا بحس وكاني ملك الحياه وارثها بدعي ربي بدون وعي انه يجمعني فيكي ويكتبك من نصيبي",
+      "انتي احلى اشي صار بحياتي واكثر شي يحببني بحالي ومكاني الله يخليلي ياكي ويجمعني معك تحت سقف واحد ♡ ياكل اشيائي "
+    ],
+    signature: "— Mohamad"
+  },
+
+  /* ---- 6. Ending ---- */
+  finale: {
+    title: "Happy Birthday",
+    name: "Rayan",
+    message: "هديه بسيطه بهديها الك بهيك مسافات",
+    by: "made with love by mohamed"
+  },
+
+  /* ---- Music (optional, never autoplays) ----
+     Put an audio file path like "music/song.mp3". Leave "" to hide the music button. */
+  music: {
+    src: "song.mp3",                              // e.g. "music/song.mp3
+    title: "قمر ومنور دنيتي",                 // shown on the small player pill
+    startScreen: true,                    // true = a "tap to open" screen starts the music; false = only the small pill
+    startText: "A little gift for you",
+    startButton: "اكبسي"
+  }
+};
+/* ===== END OF EDIT AREA ===== */
+
+
+/* ==========================================================================
+   Engine – you don't need to change anything below
+   ========================================================================== */
+const $  = (s, r = document) => r.querySelector(s);
+const nl = t => String(t).replace(/\n/g, "<br>");
+const ico = (n, c = "") => `<svg class="ico ${c}" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+let photoNo = 0;
+const photo = (src, alt = "") => {
+  const label = `[PHOTO ${String(++photoNo).padStart(2, "0")}]`;
+  return `<div class="photo">${src ? `<img src="${src}" alt="${alt}" loading="lazy">` : `<div class="ph">${ico("camera")}<span>${label}</span></div>`}</div>`;
+};
+const palette = [
+  ["var(--pink)","var(--pink-pale)"], ["var(--turq)","var(--turq-pale)"], ["var(--mauve)","var(--pink-pale)"]
+];
+
+/* ----- fill static text ----- */
+const C = CONFIG;
+$("#heroFor").textContent   = C.hero.forLine;
+$("#heroTitle").textContent = C.hero.title;
+$("#heroSub").textContent   = C.hero.sub;
+$("#heroBtn").textContent   = C.hero.button;
+$("#tlKicker").textContent  = C.timeline.kicker;
+$("#tlTitle").textContent   = C.timeline.title;
+$("#tlSub").textContent     = C.timeline.sub;
+$("#phKicker").textContent  = C.gallery.kicker;
+$("#phTitle").textContent   = C.gallery.title;
+$("#ltKicker").textContent  = C.little.kicker;
+$("#ltTitle").textContent   = C.little.title;
+$("#letterTitle").textContent = C.letter.title;
+$("#finTitle").textContent  = C.finale.title;
+$("#finName").textContent   = C.finale.name;
+$("#finMsg").innerHTML      = nl(C.finale.message);
+$("#finBy").textContent     = C.finale.by;
+if (!C.timeline.sub) $("#tlSub").remove();
+
+/* ----- timeline ----- */
+(function(){
+  const tl = $("#timeline"); let html = "", k = 0;
+  C.timeline.items.forEach((it, i) => {
+    if (it.lead) html += `<div class="tl-lead reveal">${it.lead}</div>`;
+    const side = i % 2 === 0 ? "left" : "right";
+    const mark = C.timeline.marks[i % C.timeline.marks.length];
+    const [col, pale] = palette[i % 3];
+    const tilt = (i % 2 === 0 ? -1 : 1) * (0.8 + (i % 3) * 0.4);
+    html += `
+    <div class="tl-item ${side} reveal">
+      <div class="tl-mark" style="--c:${col};--pale:${pale}">${ico(mark)}</div>
+      <div class="card" style="--r:${tilt}deg">
+        <span class="tape ${["","pink","mauve"][i % 3]}"></span>
+        ${photo(it.photo, it.title)}
+        ${it.date ? `<span class="date">${it.date}</span>` : ""}
+        <h3>${it.title}</h3>
+        <p>${nl(it.text)}</p>
+      </div>
+    </div>`;
+  });
+  html += `<span class="tl-end">${ico("heart")}</span>`;
+  tl.innerHTML = html;
+})();
+
+/* ----- gallery ----- */
+(function(){
+  let html = "";
+  const sc = { heart:["var(--pink)","var(--pink-soft)"], star:["var(--turq)","var(--turq-pale)"], sparkle:["var(--mauve)","var(--pink-pale)"],
+               flower:["var(--pink)","var(--pink-pale)"], butterfly:["var(--turq)","var(--turq-soft)"], moon:["var(--mauve)","var(--mauve-soft)"] };
+  C.gallery.photos.forEach((p, i) => {
+    const s = p.sticker && sc[p.sticker];
+    html += `
+    <figure class="pol reveal" style="--r:${p.tilt}deg;--d:${(i % 3) * .12}s">
+      <span class="tape ${p.tape === "turq" ? "" : p.tape}"></span>
+      ${photo(p.photo, p.caption).replace('class="photo"', 'class="photo"')}
+      <figcaption class="cap">${p.caption}</figcaption>
+      ${s ? `<span class="sticker" style="--c:${s[0]};--sf:${s[1]}">${ico(p.sticker)}</span>` : ""}
+    </figure>`;
+  });
+  if (C.gallery.note) html += `<div class="scrap-note reveal"><span class="tape pink"></span>${nl(C.gallery.note)}</div>`;
+  $("#scrap").innerHTML = html;
+})();
+
+/* ----- little things ----- */
+(function(){
+  const cols = ["var(--pink)","var(--turq)","var(--mauve)"];
+  $("#ltGrid").innerHTML = C.little.cards.map((c, i) => `
+    <div class="lt ${c.style} reveal" style="--r:${c.tilt || 0}deg;--d:${(i % 3) * .1}s">
+      ${c.icon ? `<span class="deco" style="color:${cols[i % 3]}">${ico(c.icon)}</span>` : ""}
+      <h3>${c.label}</h3>
+      <p>${nl(c.text)}</p>
+    </div>`).join("");
+})();
+
+/* ----- letter ----- */
+$("#letterBody").innerHTML =
+  C.letter.paragraphs.map(p => `<p>${nl(p)}</p>`).join("") +
+  (C.letter.signature ? `<p class="sign">${C.letter.signature}</p>` : "");
+
+/* ----- swap [data-ico] placeholders for real SVGs ----- */
+document.querySelectorAll("[data-ico]").forEach(el => { el.insertAdjacentHTML("afterbegin", ico(el.dataset.ico)); });
+
+/* ----- tiny twinkling stars in the hero ----- */
+(function(){
+  const box = $("#heroStars"), cols = ["var(--pink)","var(--turq)","var(--mauve-soft)"];
+  for (let i = 0; i < 22; i++) {
+    const s = document.createElement("span");
+    s.className = "twinkle";
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--w:${8+Math.random()*10}px;--c:${cols[i%3]};--t:${6+Math.random()*6}s;--dl:${2+Math.random()*6}s`;
+    s.innerHTML = ico(i % 2 ? "sparkle" : "star");
+    box.appendChild(s);
+  }
+})();
+
+/* ----- confetti (only when the ending is reached, only a couple of passes) ----- */
+(function(){
+  const box = $("#confetti"), cols = ["#de8ab0","#bfe6ea","#f3c9da","#00b5d6","#dcc6d2","#b0667f"];
+  for (let i = 0; i < 34; i++) {
+    const c = document.createElement("i");
+    c.style.cssText = `left:${Math.random()*100}%;background:${cols[i%cols.length]};--t:${8+Math.random()*6}s;--dl:${Math.random()*5}s;--sw:${(Math.random()*40+10)|0}px;` +
+      (i % 3 === 0 ? "border-radius:50%;width:9px;height:9px;" : "");
+    box.appendChild(c);
+  }
+})();
+
+/* ----- reveal on scroll + finale trigger ----- */
+(function(){
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+    { threshold: .15, rootMargin: "0px 0px -6% 0px" });
+  document.querySelectorAll(".reveal").forEach(el => reduce ? el.classList.add("in") : io.observe(el));
+
+  const fin = $("#finale");
+  const fo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { fin.classList.add("go"); fo.disconnect(); } }), { threshold: .45 });
+  fo.observe(fin);
+  if (reduce) document.querySelectorAll(".pop").forEach(p => p.style.opacity = .9);
+})();
+
+/* ----- very light parallax on decorations ----- */
+(function(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const items = [...document.querySelectorAll(".deco[data-s]")]; let tick = false;
+  const run = () => { tick = false;
+    items.forEach(el => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > innerHeight + 200) return;
+      el.style.translate = `0 ${((r.top + r.height / 2 - innerHeight / 2) * parseFloat(el.dataset.s)).toFixed(1)}px`;
+    });
+  };
+  addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true });
+  run();
+})();
+
+/* ----- optional music (off by default, user must tap) ----- */
+(function(){
+  const btn = $("#music");
+  if (!C.music.src) return;
+  const audio = new Audio(C.music.src); audio.loop = true; audio.volume = .5;
+  const set = on => {
+    btn.setAttribute("aria-pressed", String(on));
+    btn.setAttribute("aria-label", on ? "Pause music" : "Play music");
+  };
+  $("#musicTitle").textContent = C.music.title || "";
+  btn.classList.add("show");
+  btn.addEventListener("click", () => {
+    const on = btn.getAttribute("aria-pressed") === "true";
+    on ? audio.pause() : audio.play().catch(() => {});
+    set(!on);
+  });
+
+  // Browsers never allow sound to start by itself, so the first tap on the
+  // start screen is what begins the music (and opens the page).
+  if (C.music.startScreen) {
+    const gate = $("#gate");
+    $("#gateText").textContent = C.music.startText;
+    $("#gateBtn").textContent  = C.music.startButton;
+    gate.hidden = false;
+    document.documentElement.classList.add("gated");
+    $("#gateBtn").addEventListener("click", () => {
+      audio.play().then(() => set(true)).catch(() => set(false));
+      gate.classList.add("out");
+      document.documentElement.classList.remove("gated");
+      setTimeout(() => gate.remove(), 1400);
+    });
+  }
+})();
+</script>
+</body>
+</html>
